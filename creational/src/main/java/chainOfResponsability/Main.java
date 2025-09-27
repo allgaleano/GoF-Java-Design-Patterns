@@ -8,9 +8,8 @@ public class Main {
         OrderRequest req4 = new OrderRequest("user123", true, false);
 
         OrderHandler orderHandler = new AuthenticationHandler();
-        orderHandler
-                        .setNextHandler(new StockHandler())
-                        .setNextHandler(new PaymentHandler());
+        orderHandler.setNextHandler(new StockHandler())
+                    .setNextHandler(new PaymentHandler());
 
         OrderService orderService = new OrderService(orderHandler);
 
