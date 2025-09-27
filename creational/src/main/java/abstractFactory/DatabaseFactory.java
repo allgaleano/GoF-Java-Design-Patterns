@@ -1,4 +1,6 @@
 package abstractFactory;
 
-public class DatabaseFactory {
+public abstract class DatabaseFactory {
+    public abstract DBConnection createConnection();
+    public abstract QueryExecutor createQueryExecutor();
 }

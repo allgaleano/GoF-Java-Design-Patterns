@@ -2,12 +2,22 @@ package abstractFactory;
 
 public class Main {
     public static void main (String[] args) {
-        DatabaseFactory mySQL = new MySQLFactory();
-        mySQL.createConnection();
-        mySQL.createQueryExecutor("SELECT * FROM users");
+        ApplicationService mySqlApp = new ApplicationService(
+                new MySQLFactory()
+        );
+        mySqlApp.dbConnect();
+        mySqlApp.executeQuery("SELECT * FROM users");
 
-        DatabaseFactory postgreSQL = new PostgreSQLFactory();
-        postgreSQL.createConnection();
-        postgreSQL.createQueryExecutor("SELECT * FROM users");
+        ApplicationService postgresApp = new ApplicationService(
+                new PostgreSQLFactory()
+        );
+        postgresApp.dbConnect();
+        postgresApp.executeQuery("SELECT * FROM users");
+
+        ApplicationService mongoDBApp = new ApplicationService(
+                new MongoDBFactory()
+        );
+        mongoDBApp.dbConnect();
+        mongoDBApp.executeQuery("db.users.find()");
     }
 }
